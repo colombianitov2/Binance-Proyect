@@ -1,0 +1,266 @@
+Listado de rutas de carpetas
+El número de serie del volumen es 000000A0 4ACE:2350
+D:.
+|   CryptoSelfBot.slnx
+|   estructura.txt
+|   
++---CryptoSelfBot.Engine
+|   |   CryptoSelfBot.Engine.csproj
+|   |   
+|   +---bin
+|   |   \---Debug
+|   |       \---net8.0
+|   |               CryptoSelfBot.Engine.deps.json
+|   |               CryptoSelfBot.Engine.dll
+|   |               CryptoSelfBot.Engine.pdb
+|   |               
+|   +---Helpers
+|   +---Models
+|   |       AccountBalance.cs
+|   |       CryptoAsset.cs
+|   |       FiatAsset.cs
+|   |       PortfolioAsset.cs
+|   |       PortfolioSnapshot.cs
+|   |       RiskSettings.cs
+|   |       TradeRecord.cs
+|   |       TradingEnvironment.cs
+|   |       TradingSignal.cs
+|   |       
+|   +---obj
+|   |   |   CryptoSelfBot.Engine.csproj.nuget.dgspec.json
+|   |   |   CryptoSelfBot.Engine.csproj.nuget.g.props
+|   |   |   CryptoSelfBot.Engine.csproj.nuget.g.targets
+|   |   |   project.assets.json
+|   |   |   project.nuget.cache
+|   |   |   
+|   |   \---Debug
+|   |       \---net8.0
+|   |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |           |   CryptoSelfBot.Engine.AssemblyInfo.cs
+|   |           |   CryptoSelfBot.Engine.AssemblyInfoInputs.cache
+|   |           |   CryptoSelfBot.Engine.assets.cache
+|   |           |   CryptoSelfBot.Engine.csproj.AssemblyReference.cache
+|   |           |   CryptoSelfBot.Engine.csproj.CoreCompileInputs.cache
+|   |           |   CryptoSelfBot.Engine.csproj.FileListAbsolute.txt
+|   |           |   CryptoSelfBot.Engine.dll
+|   |           |   CryptoSelfBot.Engine.GeneratedMSBuildEditorConfig.editorconfig
+|   |           |   CryptoSelfBot.Engine.GlobalUsings.g.cs
+|   |           |   CryptoSelfBot.Engine.pdb
+|   |           |   
+|   |           +---ref
+|   |           |       CryptoSelfBot.Engine.dll
+|   |           |       
+|   |           \---refint
+|   |                   CryptoSelfBot.Engine.dll
+|   |                   
+|   \---Services
+|           BinanceService.cs
+|           BinanceSocketService.cs
+|           BinanceSpotService.cs
+|           DatabaseService.cs
+|           DataImportanceClassifier.cs
+|           IBinanceService.cs
+|           MarketAIService.cs
+|           MarketScanner.cs
+|           PortfolioEngine.cs
+|           RiskManager.cs
+|           SentimentWeighter.cs
+|           StorageManager.cs
+|           StrategyEngine.cs
+|           TradingEngine.cs
+|           TradingEnvironment.cs
+|           
++---CryptoSelfBot.Updater
+|   |   Class1.cs
+|   |   CryptoSelfBot.Updater.csproj
+|   |   
+|   +---bin
+|   |   \---Debug
+|   |       \---net8.0
+|   |               CryptoSelfBot.Updater.deps.json
+|   |               CryptoSelfBot.Updater.dll
+|   |               CryptoSelfBot.Updater.pdb
+|   |               
+|   \---obj
+|       |   CryptoSelfBot.Updater.csproj.nuget.dgspec.json
+|       |   CryptoSelfBot.Updater.csproj.nuget.g.props
+|       |   CryptoSelfBot.Updater.csproj.nuget.g.targets
+|       |   project.assets.json
+|       |   project.nuget.cache
+|       |   
+|       \---Debug
+|           \---net8.0
+|               |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|               |   CryptoSelfBot.Updater.AssemblyInfo.cs
+|               |   CryptoSelfBot.Updater.AssemblyInfoInputs.cache
+|               |   CryptoSelfBot.Updater.assets.cache
+|               |   CryptoSelfBot.Updater.csproj.AssemblyReference.cache
+|               |   CryptoSelfBot.Updater.csproj.CoreCompileInputs.cache
+|               |   CryptoSelfBot.Updater.csproj.FileListAbsolute.txt
+|               |   CryptoSelfBot.Updater.dll
+|               |   CryptoSelfBot.Updater.GeneratedMSBuildEditorConfig.editorconfig
+|               |   CryptoSelfBot.Updater.GlobalUsings.g.cs
+|               |   CryptoSelfBot.Updater.pdb
+|               |   
+|               +---ref
+|               |       CryptoSelfBot.Updater.dll
+|               |       
+|               \---refint
+|                       CryptoSelfBot.Updater.dll
+|                       
+\---CryptoSelfBot.Wpf
+    |   App.xaml
+    |   App.xaml.cs
+    |   AssemblyInfo.cs
+    |   CryptoSelfBot.Wpf.csproj
+    |   CryptoSelfBot.Wpf.csproj.user
+    |   MainWindow.xaml
+    |   MainWindow.xaml.cs
+    |   
+    +---Assets
+    +---bin
+    |   \---Debug
+    |       \---net8.0-windows
+    +---Components
+    |   \---Cards
+    |           CryptoCard.xaml
+    |           CryptoCard.xaml.cs
+    |           
+    +---Helpers
+    |       EncryptionHelper.cs
+    |       RelayCommand.cs
+    |       
+    +---Models
+    |       AppSettings.cs
+    |       CryptoAsset.cs
+    |       FiatAsset.cs
+    |       TradingEnvironment.cs
+    |       
+    +---obj
+    |   |   CryptoSelfBot.Wpf.csproj.nuget.dgspec.json
+    |   |   CryptoSelfBot.Wpf.csproj.nuget.g.props
+    |   |   CryptoSelfBot.Wpf.csproj.nuget.g.targets
+    |   |   project.assets.json
+    |   |   project.nuget.cache
+    |   |   
+    |   \---Debug
+    |       \---net8.0-windows
+    |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    |           |   App.baml
+    |           |   App.g.cs
+    |           |   App.g.i.cs
+    |           |   CryptoSelfBot.Wpf.AssemblyInfo.cs
+    |           |   CryptoSelfBot.Wpf.AssemblyInfoInputs.cache
+    |           |   CryptoSelfBot.Wpf.assets.cache
+    |           |   CryptoSelfBot.Wpf.csproj.AssemblyReference.cache
+    |           |   CryptoSelfBot.Wpf.csproj.CoreCompileInputs.cache
+    |           |   CryptoSelfBot.Wpf.csproj.FileListAbsolute.txt
+    |           |   CryptoSelfBot.Wpf.g.resources
+    |           |   CryptoSelfBot.Wpf.GeneratedMSBuildEditorConfig.editorconfig
+    |           |   CryptoSelfBot.Wpf.GlobalUsings.g.cs
+    |           |   CryptoSelfBot.Wpf_MarkupCompile.cache
+    |           |   CryptoSelfBot.Wpf_MarkupCompile.i.cache
+    |           |   MainWindow.baml
+    |           |   MainWindow.g.cs
+    |           |   MainWindow.g.i.cs
+    |           |   
+    |           +---Components
+    |           |   \---Cards
+    |           |           CryptoCard.baml
+    |           |           CryptoCard.g.cs
+    |           |           CryptoCard.g.i.cs
+    |           |           
+    |           +---ref
+    |           +---refint
+    |           +---Themes
+    |           |       BinanceDark.baml
+    |           |       Buttons.baml
+    |           |       Cards.baml
+    |           |       Colors.baml
+    |           |       CyberpunkNeon.baml
+    |           |       DarkBrutalism.baml
+    |           |       MinimalGlow.baml
+    |           |       SciFiHUD.baml
+    |           |       Scrollbars.baml
+    |           |       Typography.baml
+    |           |       
+    |           \---Views
+    |                   CreditsWindow.baml
+    |                   CreditsWindow.g.cs
+    |                   CreditsWindow.g.i.cs
+    |                   ExportWindow.baml
+    |                   ExportWindow.g.cs
+    |                   ExportWindow.g.i.cs
+    |                   HistoryWindow.baml
+    |                   HistoryWindow.g.cs
+    |                   HistoryWindow.g.i.cs
+    |                   InstructionsWindow.baml
+    |                   InstructionsWindow.g.cs
+    |                   InstructionsWindow.g.i.cs
+    |                   LogsWindow.baml
+    |                   LogsWindow.g.cs
+    |                   LogsWindow.g.i.cs
+    |                   NewsWindow.baml
+    |                   NewsWindow.g.cs
+    |                   NewsWindow.g.i.cs
+    |                   NotificationsWindow.baml
+    |                   NotificationsWindow.g.cs
+    |                   NotificationsWindow.g.i.cs
+    |                   SettingsWindow.baml
+    |                   SettingsWindow.g.cs
+    |                   SettingsWindow.g.i.cs
+    |                   SourcesWindow.baml
+    |                   SourcesWindow.g.cs
+    |                   SourcesWindow.g.i.cs
+    |                   ThemeWindow.baml
+    |                   ThemeWindow.g.cs
+    |                   ThemeWindow.g.i.cs
+    |                   WithdrawWindow.baml
+    |                   WithdrawWindow.g.cs
+    |                   WithdrawWindow.g.i.cs
+    |                   
+    +---Services
+    |       AppDataService.cs
+    |       CoolorsService.cs
+    |       SettingsService.cs
+    |       ThemeManager.cs
+    |       
+    +---Themes
+    |       BinanceDark.xaml
+    |       Buttons.xaml
+    |       Cards.xaml
+    |       Colors.xaml
+    |       CyberpunkNeon.xaml
+    |       DarkBrutalism.xaml
+    |       MinimalGlow.xaml
+    |       SciFiHUD.xaml
+    |       Scrollbars.xaml
+    |       Typography.xaml
+    |       
+    +---ViewModels
+    |       MainViewModel.cs
+    |       
+    \---Views
+            CreditsWindow.xaml
+            CreditsWindow.xaml.cs
+            ExportWindow.xaml
+            ExportWindow.xaml.cs
+            HistoryWindow.xaml
+            HistoryWindow.xaml.cs
+            InstructionsWindow.xaml
+            InstructionsWindow.xaml.cs
+            LogsWindow.xaml
+            LogsWindow.xaml.cs
+            NewsWindow.xaml
+            NewsWindow.xaml.cs
+            NotificationsWindow.xaml
+            NotificationsWindow.xaml.cs
+            SettingsWindow.xaml
+            SettingsWindow.xaml.cs
+            SourcesWindow.xaml
+            SourcesWindow.xaml.cs
+            ThemeWindow.xaml
+            ThemeWindow.xaml.cs
+            WithdrawWindow.xaml
+            WithdrawWindow.xaml.cs
+            

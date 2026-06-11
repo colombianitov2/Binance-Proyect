@@ -1,0 +1,62 @@
+﻿<Window x:Class="CryptoSelfBot.Wpf.Views.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Historial de Transacciones"
+        Height="700"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Grid Margin="25">
+        <Border CornerRadius="20"
+                Background="#0C152B"
+                Padding="25">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="HISTORIAL DE TRANSACCIONES"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TextBrush}"
+                           Margin="0,0,0,20"/>
+
+                <DataGrid Grid.Row="1"
+                          x:Name="TradesDataGrid"
+                          Background="{DynamicResource CardBrush}"
+                          Foreground="{DynamicResource TextBrush}"
+                          BorderThickness="0"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Fecha"
+                                            Binding="{Binding TimestampUtc, StringFormat='{}{0:dd/MM/yyyy HH:mm:ss}'}"
+                                            Width="180"/>
+                        <DataGridTextColumn Header="Par"
+                                            Binding="{Binding Symbol}"
+                                            Width="140"/>
+                        <DataGridTextColumn Header="Tipo"
+                                            Binding="{Binding Side}"
+                                            Width="100"/>
+                        <DataGridTextColumn Header="Cantidad"
+                                            Binding="{Binding Quantity, StringFormat='N8'}"
+                                            Width="150"/>
+                        <DataGridTextColumn Header="Precio"
+                                            Binding="{Binding Price, StringFormat='N2'}"
+                                            Width="120"/>
+                        <DataGridTextColumn Header="Estrategia"
+                                            Binding="{Binding Strategy}"
+                                            Width="140"/>
+                        <DataGridTextColumn Header="Notas"
+                                            Binding="{Binding Notes}"
+                                            Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <!-- BINANCE -->
+    <PackageReference Include="Binance.Net" Version="12.12.0" />
+    <PackageReference Include="CryptoExchange.Net" Version="11.1.1" />
+
+    <!-- SQLITE -->
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
+
+    <!-- JSON -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+
+    <!-- EPPLUS -->
+    <PackageReference Include="EPPlus" Version="8.5.4" />
+
+    <!-- FLURL -->
+    <PackageReference Include="Flurl.Http" Version="4.0.2" />
+
+  </ItemGroup>
+
+</Project>

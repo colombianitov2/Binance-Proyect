@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#001122"/>
+    <SolidColorBrush x:Key="SecondaryBackground" Color="#003355"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#00CCFF"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#AADDFF"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#557799"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#00CCFF"/>
+    <FontFamily x:Key="AppFont">Consolas, monospace</FontFamily>
+</ResourceDictionary>

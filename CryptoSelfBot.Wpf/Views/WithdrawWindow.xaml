@@ -1,0 +1,33 @@
+﻿<Window x:Class="CryptoSelfBot.Wpf.Views.WithdrawWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Retiro"
+        Height="400"
+        Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+    <Grid Margin="20">
+        <Border CornerRadius="20" Background="{DynamicResource CardBrush}" Padding="25">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Viewbox Width="32" Height="32" Margin="0,0,12,0">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M12,2 L22,12 L12,22 L2,12 Z" Fill="{DynamicResource PrimaryBrush}"/>
+                        </Canvas>
+                    </Viewbox>
+                    <TextBlock Text="RETIRO DE FONDOS" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource TextBrush}"/>
+                </StackPanel>
+
+                <TextBlock Text="Moneda local de retiro:" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10"/>
+                <ComboBox x:Name="WithdrawCurrencyCombo" Width="200" Height="30" SelectedIndex="0">
+                    <ComboBoxItem Content="USDT" />
+                    <ComboBoxItem Content="BTC" />
+                    <ComboBoxItem Content="ETH" />
+                </ComboBox>
+                <TextBlock Text="Esta opción convertirá todos tus activos a la moneda seleccionada." Foreground="{DynamicResource MutedTextBrush}" Margin="0,10"/>
+                <TextBlock Text="Esta acción no se puede deshacer." Foreground="{DynamicResource DangerBrush}" FontWeight="Bold" Margin="0,10"/>
+                <Button Content="Consolidar Fondos" Width="200" Height="40" Style="{StaticResource PrimaryButton}" Click="Consolidate_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,81 @@
+<UserControl x:Class="CryptoSelfBot.Wpf.Components.Menu.MenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             Height="Auto" Width="Auto">
+
+    <UniformGrid Rows="2" Columns="4" Margin="0,10,0,10">
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnHistoryClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="TrendingUp" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Historial" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnNewsClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="NewspaperVariantMultiple" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Noticias" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnExportClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="Upload" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Exportar" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnSourcesClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="Web" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Fuentes" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnWithdrawClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="CurrencyUsd" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Retiro" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnSettingsClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="CogOutline" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Configuración" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnInstructionsClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="FileDocument" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Instrucciones" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Margin="8" FontSize="18" FontWeight="SemiBold"
+                Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}"
+                BorderBrush="{DynamicResource BorderBrushColor}" Click="OnCreditsClicked">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <iconPacks:PackIconMaterial Kind="AccountCircle" Width="20" Height="20" Foreground="{DynamicResource PrimaryBrush}"/>
+                <TextBlock Text="Créditos" Margin="8,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </UniformGrid>
+
+</UserControl>

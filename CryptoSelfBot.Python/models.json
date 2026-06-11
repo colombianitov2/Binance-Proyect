@@ -1,0 +1,10 @@
+{
+  "models_dir": "E:\\Visual Estudio\\Binance App Proyect\\IAS\\data\\models",
+  "default_model": "dolphin3.0-llama3.1-8b-q4_k_m.gguf",
+  "aliases": {
+    "dolphin3": "dolphin3.0-llama3.1-8b-q4_k_m.gguf",
+    "tinyllama": "TinyLLama-v0.Q8_0.gguf",
+    "gemma": "codegemma-7b-it-Q4_K_M.gguf",
+    "mistral": "mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+  }
+}

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CryptoSelfBot.Engine/CryptoSelfBot.Engine.csproj" />
+  <Project Path="CryptoSelfBot.Updater/CryptoSelfBot.Updater.csproj" />
+  <Project Path="CryptoSelfBot.Wpf/CryptoSelfBot.Wpf.csproj" />
+</Solution>

@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <DrawingBrush x:Key="AppLogoBrush" Stretch="Uniform">
+    <DrawingBrush.Drawing>
+      <GeometryDrawing Brush="{DynamicResource PrimaryBrush}">
+        <GeometryDrawing.Geometry>
+          <Geometry>F1 M12,2 L15,9 L22,9 L17,13 L19,20 L12,16 L5,20 L7,13 L2,9 L9,9 Z</Geometry>
+        </GeometryDrawing.Geometry>
+      </GeometryDrawing>
+    </DrawingBrush.Drawing>
+  </DrawingBrush>
+
+</ResourceDictionary>

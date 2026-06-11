@@ -1,0 +1,161 @@
+﻿<Window x:Class="CryptoSelfBot.Wpf.Views.InstructionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Instrucciones"
+        Height="900"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+        <Grid Margin="40">
+
+            <StackPanel>
+
+                <!-- TITULO -->
+
+                <TextBlock Text="CONFIGURACIÓN DE API BINANCE"
+                           FontSize="40"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TextBrush}"
+                           Margin="0,0,0,30"/>
+
+                <!-- CARD -->
+
+                <Border Background="{DynamicResource CardBrush}"
+                        CornerRadius="24"
+                        Padding="35">
+
+                    <StackPanel>
+
+                        <!-- PASO 1 -->
+
+                        <Border Background="{DynamicResource CardBrush}"
+                                CornerRadius="18"
+                                Padding="22"
+                                Margin="0,0,0,20">
+
+                            <StackPanel>
+
+                                <TextBlock Text="1. INGRESAR A BINANCE"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource PrimaryBrush}"/>
+
+                                <TextBlock Text="Accede a tu cuenta oficial de Binance desde el navegador."
+                                           Margin="0,10,0,0"
+                                           FontSize="18"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource TextBrush}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- PASO 2 -->
+
+                        <Border Background="{DynamicResource CardBrush}"
+                                CornerRadius="18"
+                                Padding="22"
+                                Margin="0,0,0,20">
+
+                            <StackPanel>
+
+                                <TextBlock Text="2. ABRIR API MANAGEMENT"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource PrimaryBrush}"/>
+
+                                <TextBlock Text="En tu perfil entra a API Management y crea una nueva API."
+                                           Margin="0,10,0,0"
+                                           FontSize="18"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource TextBrush}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- PASO 3 -->
+
+                        <Border Background="{DynamicResource CardBrush}"
+                                CornerRadius="18"
+                                Padding="22"
+                                Margin="0,0,0,20">
+
+                            <StackPanel>
+
+                                <TextBlock Text="3. ACTIVAR SOLO LECTURA Y SPOT"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource PrimaryBrush}"/>
+
+                                <TextBlock Text="Habilita únicamente permisos de Spot y Lectura."
+                                           Margin="0,10,0,0"
+                                           FontSize="18"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource TextBrush}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- PASO 4 -->
+
+                        <Border Background="{DynamicResource CardBrush}"
+                                CornerRadius="18"
+                                Padding="22"
+                                Margin="0,0,0,20">
+
+                            <StackPanel>
+
+                                <TextBlock Text="4. NO HABILITAR RETIROS"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource TigerFlameBrush}"/>
+
+                                <TextBlock Text="Por seguridad, nunca habilites permisos de retiro."
+                                           Margin="0,10,0,0"
+                                           FontSize="18"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource TextBrush}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- PASO 5 -->
+
+                        <Border Background="{DynamicResource CardBrush}"
+                                CornerRadius="18"
+                                Padding="22">
+
+                            <StackPanel>
+
+                                <TextBlock Text="5. PEGAR CREDENCIALES EN CONFIGURACIÓN"
+                                           FontSize="26"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource PrimaryBrush}"/>
+
+                                <TextBlock Text="Copia API Key y Secret Key en la sección Configuración de CryptoSelfBot."
+                                           Margin="0,10,0,0"
+                                           FontSize="18"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource TextBrush}"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+
+            </StackPanel>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

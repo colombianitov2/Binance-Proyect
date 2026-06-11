@@ -1,0 +1,22 @@
+<UserControl x:Class="CryptoSelfBot.Wpf.Controls.Loader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="24" Width="24">
+    <Grid>
+        <Ellipse Width="24" Height="24" Stroke="{DynamicResource PrimaryBrush}" StrokeThickness="2" Opacity="0.25"/>
+        <Path Data="M12,2 A10,10 0 1 1 11.99,2" Stroke="{DynamicResource PrimaryBrush}" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+            <Path.RenderTransform>
+                <RotateTransform x:Name="SpinnerRotate" Angle="0" CenterX="12" CenterY="12"/>
+            </Path.RenderTransform>
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimation Storyboard.TargetName="SpinnerRotate" Storyboard.TargetProperty="Angle" From="0" To="360" Duration="0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+    </Grid>
+</UserControl>

@@ -1,0 +1,232 @@
+﻿<Window x:Class="CryptoSelfBot.Wpf.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configuración"
+        Height="850"
+        Width="1300"
+        Background="{DynamicResource BackgroundBrush}"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="40" x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="CONFIGURACIÓN GENERAL" FontSize="40" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Margin="0,0,0,30"/>
+
+        <TabControl Grid.Row="1" Background="Transparent" BorderBrush="{DynamicResource BorderBrushColor}">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                    <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+                    <Setter Property="Padding" Value="16,10"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                    <Setter Property="Background" Value="{DynamicResource CardBrush}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+                <!-- ======================== CUENTAS ======================== -->
+                <TabItem Header="Cuentas Binance" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <Grid Margin="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1.6*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Left: Form -->
+                        <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                            <TextBlock Text="GESTIÓN DE CUENTAS" Style="{StaticResource SectionTitle}"/>
+                            <TextBlock Text="Gestión de cuentas y claves API. No compartas tus claves." Style="{StaticResource MutedText}" Margin="0,6,0,12" TextWrapping="Wrap"/>
+                            <UniformGrid Columns="2" Rows="3" Margin="0,6,0,12">
+                                <TextBlock Text="Nombre" Foreground="{DynamicResource TextBrush}" VerticalAlignment="Center"/>
+                                <TextBox x:Name="AccountNameBox" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}"/>
+                                <TextBlock Text="API Key" Foreground="{DynamicResource TextBrush}" VerticalAlignment="Center"/>
+                                <PasswordBox x:Name="ApiKeyBox" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}" ToolTip="Se guarda cifrada con DPAPI. Por seguridad, al editar una cuenta existente se muestra enmascarada."/>
+                                <TextBlock Text="Secret Key" Foreground="{DynamicResource TextBrush}" VerticalAlignment="Center"/>
+                                <PasswordBox x:Name="SecretKeyBox" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}"/>
+                            </UniformGrid>
+
+                            <TextBlock Text="Entorno" Foreground="{DynamicResource TextBrush}" FontWeight="Bold" Margin="0,6,0,4"/>
+                            <ComboBox x:Name="EnvironmentCombo" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}">
+                                <ComboBoxItem Content="Live (real)" Tag="Live" IsSelected="True"/>
+                                <ComboBoxItem Content="Testnet (pruebas)" Tag="Testnet"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Mercado" Foreground="{DynamicResource TextBrush}" FontWeight="Bold" Margin="0,6,0,4"/>
+                            <ComboBox x:Name="MarketCombo" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}" IsEnabled="False" ToolTip="La app decide automáticamente si conviene operar Spot, Futuros, Margin o Convert según saldos, permisos y condiciones.">
+                                <ComboBoxItem Content="Autónomo: la app decide" Tag="Auto" IsSelected="True"/>
+                            </ComboBox>
+                            <TextBlock Text="El motor decidirá el mercado operativo sin pedir selección manual." Foreground="{DynamicResource MutedTextBrush}" Margin="0,4,0,0" TextWrapping="Wrap"/>
+
+                            <CheckBox x:Name="NoWithdrawalsCheck" Content="Deshabilitar retiradas (NoWithdrawals)" Foreground="{DynamicResource MutedTextBrush}" Margin="0,8,0,8"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
+                                <Button Content="Guardar" Width="160" Height="36" Style="{StaticResource PrimaryButton}" Click="SaveAccountChanges_Click"/>
+                                <Button Content="Migrar claves DPAPI" Width="230" Height="36" Margin="12,0,0,0" Style="{StaticResource PrimaryButton}" Click="ForceMigrate_Click" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Right: List and actions -->
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Cuentas existentes" Style="{StaticResource SectionTitle}"/>
+                            <ListBox x:Name="AccountsListBox" Height="220" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}" SelectionChanged="AccountsListBox_SelectionChanged"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,12">
+                                <Button Content="Activar" Width="120" Height="36" Style="{StaticResource PrimaryButton}" Click="ActivateAccount_Click"/>
+                                <Button Content="Eliminar" Width="120" Height="36" Margin="8,0,0,0" Style="{StaticResource PrimaryButton}" Click="DeleteAccount_Click"/>
+                                <Button Content="Exportar" Width="120" Height="36" Margin="8,0,0,0" Style="{StaticResource PrimaryButton}" Click="ExportAccounts_Click"/>
+                                <Button Content="Importar" Width="120" Height="36" Margin="8,0,0,0" Style="{StaticResource PrimaryButton}" Click="ImportAccounts_Click"/>
+                            </StackPanel>
+                            <TextBlock x:Name="AccountStatusText" Style="{StaticResource MutedText}" Margin="0,8,0,0"/>
+                            <CheckBox x:Name="PauseLoggingCheck" Content="Pausar registro de datos" Checked="PauseLoggingCheck_Changed" Unchecked="PauseLoggingCheck_Changed" Margin="0,8,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <!-- ======================== TEMA ======================== -->
+                <TabItem Header="Tema" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="PERSONALIZACIÓN VISUAL" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Selecciona un tema o genera una paleta aleatoria desde Coolors." Foreground="{DynamicResource MutedTextBrush}" Margin="0,10,0,15"/>
+                        <ListBox x:Name="ThemeListBox" Height="180" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}">
+                            <ListBoxItem Content="Binance Dark" Tag="Themes/BinanceDark.xaml"/>
+                            <ListBoxItem Content="Cyberpunk Neon" Tag="Themes/CyberpunkNeon.xaml"/>
+                            <ListBoxItem Content="Dark Brutalism" Tag="Themes/DarkBrutalism.xaml"/>
+                            <ListBoxItem Content="Minimal Glow" Tag="Themes/MinimalGlow.xaml"/>
+                            <ListBoxItem Content="Sci-Fi HUD" Tag="Themes/SciFiHUD.xaml"/>
+                        </ListBox>
+                        <WrapPanel Margin="0,10">
+                            <Button Content="Aplicar tema" Width="120" Height="35" Margin="0,0,10,0" Background="{DynamicResource SuccessBrush}" Foreground="White" FontWeight="Bold"
+                                    Click="ApplyTheme_Click"/>
+                            <Button Content="Sorpréndeme (Coolors)" Width="160" Height="35" Background="{DynamicResource PrimaryBrush}" Foreground="White" FontWeight="Bold"
+                                    Click="SurpriseTheme_Click"/>
+                        </WrapPanel>
+                        <Button Content="Abrir Gestor de Temas" Width="180" Height="35" Background="{DynamicResource PrimaryBrush}" Foreground="{DynamicResource TextBrush}" FontWeight="Bold"
+        Click="OpenThemeWindow_Click" Margin="0,10,0,0"/>
+                        <TextBlock x:Name="ThemeStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ======================== RIESGO ======================== -->
+                <TabItem Header="Riesgo" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="CONFIGURACIÓN DE RIESGO" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Máximo por operación (USDT)" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,0"/>
+                        <TextBox x:Name="MaxTradeAmountBox" Height="36" Width="260" HorizontalAlignment="Left"
+                                 Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}"
+                                 BorderBrush="{DynamicResource PrimaryBrush}" ToolTip="Escribe un monto fijo. Si lo dejas vacío, el bot decide automáticamente según capital, riesgo y mercado."/>
+                        <TextBlock x:Name="MaxTradeValueText" Text="Automático si se deja vacío" Foreground="{DynamicResource MutedTextBrush}" Margin="0,4,0,0"/>
+                        <TextBlock Text="Máximo de posiciones abiertas" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,0"/>
+                        <Slider x:Name="MaxPosSlider" Minimum="0" Maximum="100" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="RiskSlider_ValueChanged"/>
+                        <TextBlock x:Name="MaxPosValueText" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="Pérdida diaria máxima (%)" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,0"/>
+                        <Slider x:Name="MaxDailyLossSlider" Minimum="0" Maximum="100" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="RiskSlider_ValueChanged"/>
+                        <TextBlock x:Name="MaxDailyLossValueText" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="Cooldown entre operaciones (segundos)" Foreground="{DynamicResource TextBrush}" Margin="0,10,0,0"/>
+                        <Slider x:Name="CooldownSlider" Minimum="0" Maximum="100" Value="10" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="RiskSlider_ValueChanged"/>
+                        <TextBlock x:Name="CooldownValueText" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <Button Content="Guardar configuración de riesgo" Width="220" Height="40" Margin="0,10" Background="{DynamicResource SuccessBrush}" Foreground="White"
+                                FontWeight="Bold" Click="SaveRiskSettings_Click"/>
+                        <TextBlock x:Name="RiskStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ======================== ALMACENAMIENTO ======================== -->
+                <TabItem Header="Almacenamiento" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="CARPETA DE DATOS" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Selecciona dónde guardar los datos. No se permite el disco C:." Foreground="{DynamicResource MutedTextBrush}" Margin="0,10,0,25"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="StoragePathText" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}"/>
+                            <Button Grid.Column="1" Content="Examinar..." Width="100" Height="35" Margin="10,0,0,0" Background="{DynamicResource PrimaryBrush}" Foreground="White"
+                                    FontWeight="Bold" Click="SelectFolder_Click"/>
+                        </Grid>
+                        <TextBlock x:Name="StorageStatusText" FontSize="12" Foreground="{DynamicResource PrimaryBrush}" Margin="0,10"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- SERVICIOS INTERNOS -->
+                <TabItem Header="Servicios internos" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="SERVICIOS INTERNOS INTEGRADOS" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="La app busca automáticamente los servicios auxiliares incluidos junto al ejecutable. Esta ruta solo se usa para pruebas avanzadas o diagnóstico." Foreground="{DynamicResource MutedTextBrush}" Margin="0,10,0,15" TextWrapping="Wrap"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="PythonPathText" Height="35" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}" ToolTip="Déjalo vacío para que CryptoSelfBot use el servicio integrado. Solo cambia esta ruta si estás probando un servicio auxiliar externo."/>
+                            <Button Grid.Column="1" Content="Examinar..." Width="120" Height="35" Margin="10,0,0,0" Background="{DynamicResource PrimaryBrush}" Foreground="White"
+                                    FontWeight="Bold" Click="SelectPythonFolder_Click"/>
+                        </Grid>
+                        <TextBlock x:Name="PythonStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ======================== IP PÚBLICA ======================== -->
+                <TabItem Header="IP Restricción" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="TU IP PÚBLICA ACTUAL" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Tu IP pública es la dirección externa desde la que Binance ve esta conexión. Si restringes tu API Key a esta IP, reduces el riesgo de que alguien use esa clave desde otro lugar." Foreground="{DynamicResource MutedTextBrush}" Margin="0,10" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="PublicIpText" FontSize="18" Foreground="{DynamicResource TextBrush}" FontWeight="Bold"/>
+                        <Button Content="Obtener IP pública" Width="200" Height="40" Margin="0,10" Background="{DynamicResource PrimaryBrush}" Foreground="White"
+                                FontWeight="Bold" Click="GetPublicIp_Click"/>
+                        <TextBlock x:Name="IpStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ======================== ACTUALIZACIÓN ======================== -->
+                <TabItem Header="API &amp; Seguridad" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="CONFIGURACIÓN DE API Y SEGURIDAD" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Instrucciones rápidas para crear y proteger tu API Key en Binance:" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10,0,10" TextWrapping="Wrap"/>
+                        <TextBlock Text="1) Crea una API Key en Binance y habilita 'Spot Trading' (NO habilites Withdrawals)." Foreground="{DynamicResource TextBrush}" Margin="0,2" TextWrapping="Wrap"/>
+                        <TextBlock Text="2) Restringe la API a tu IP pública (usa 'Obtener IP pública' en esta ventana)." Foreground="{DynamicResource TextBrush}" Margin="0,2" TextWrapping="Wrap"/>
+                        <TextBlock Text="3) Guarda las keys aquí; se cifran automáticamente con DPAPI para tu usuario." Foreground="{DynamicResource TextBrush}" Margin="0,2,0,10" TextWrapping="Wrap"/>
+                        <WrapPanel Margin="0,10">
+                            <Button Content="Probar conexión con cuenta seleccionada" Width="260" Height="36" Background="{DynamicResource PrimaryBrush}" Foreground="White" Click="TestConnection_Click"/>
+                            <Button Content="Forzar migración de claves (DPAPI)" Width="230" Height="36" Margin="10,0,0,0" Background="{DynamicResource SuccessBrush}" Foreground="White" Click="ForceMigrate_Click"/>
+                            <Button Content="Guardar API Settings" Width="200" Height="36" Margin="10,0,0,0" Background="{DynamicResource PrimaryBrush}" Foreground="White" Click="SaveApiSettings_Click"/>
+                        </WrapPanel>
+                        <TextBlock x:Name="ApiGuideStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10" Text=""/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                            <TextBlock Text="FRED API Key:" VerticalAlignment="Center" Foreground="{DynamicResource TextBrush}" Margin="0,0,6,0"/>
+                            <TextBox x:Name="FREDKeyBox" Width="360" Height="26" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}"/>
+                            <CheckBox x:Name="EcbScraperCheck" Content="ECB Scraper Enabled" Foreground="{DynamicResource TextBrush}" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <!-- ======================== ACTUALIZACIÓN ======================== -->
+                <TabItem Header="Actualización" FontWeight="Bold" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource CardBackgroundBrush}">
+                    <StackPanel Margin="20">
+                        <TextBlock Text="ACTUALIZACIÓN DEL SOFTWARE" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryBrush}"/>
+                        <TextBlock Text="Busca, descarga e instala la última versión desde GitHub." Foreground="#A1A1AA" Margin="0,10"/>
+                        <TextBlock x:Name="CurrentVersionText" Foreground="{DynamicResource TextBrush}" FontSize="16" Margin="0,5"/>
+                        <Button Content="Buscar actualizaciones" Width="200" Height="40" Margin="0,10" Background="{DynamicResource PrimaryBrush}" Foreground="White"
+                                FontWeight="Bold" Click="CheckForUpdates_Click"/>
+                        <ProgressBar x:Name="UpdateProgressBar" Height="20" Margin="0,10" Maximum="100" Visibility="Collapsed"/>
+                        <TextBlock x:Name="UpdateStatusText" FontSize="12" Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+</Window>

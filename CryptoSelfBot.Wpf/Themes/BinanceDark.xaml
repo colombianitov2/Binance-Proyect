@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Tema Binance Dark (original) -->
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#181A20"/>
+    <SolidColorBrush x:Key="SecondaryBackground" Color="#212731"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#F0B90B"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#EAECEF"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#929AA5"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#333B47"/>
+    <!-- Fuente -->
+    <FontFamily x:Key="AppFont">BinanceNova, Arial, sans-serif</FontFamily>
+</ResourceDictionary>

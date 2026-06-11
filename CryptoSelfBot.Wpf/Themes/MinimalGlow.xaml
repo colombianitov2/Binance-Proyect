@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="PrimaryBackground" Color="#1E1E1E"/>
+    <SolidColorBrush x:Key="SecondaryBackground" Color="#2D2D2D"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#4CAF50"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#BBBBBB"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#4CAF50"/>
+    <FontFamily x:Key="AppFont">Segoe UI, sans-serif</FontFamily>
+</ResourceDictionary>

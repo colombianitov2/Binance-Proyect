@@ -1,0 +1,195 @@
+﻿<Window x:Class="CryptoSelfBot.Wpf.Views.ThemeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Themes"
+        Height="900"
+        Width="1500"
+        WindowStartupLocation="CenterScreen"
+        Background="#050816">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <StackPanel Margin="0,0,0,30">
+                <TextBlock Text="TEMAS Y PERSONALIZACIÓN" Foreground="White" FontSize="42" FontWeight="Bold"/>
+                <TextBlock Text="Sistema visual dinámico para CryptoSelfBot." Foreground="#94A3B8" FontSize="18" Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <!-- COOLORS -->
+            <Border Grid.Row="1" Background="{DynamicResource CardBackgroundBrush}" CornerRadius="20" Padding="25" Margin="0,0,0,30">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="INTEGRACIÓN COOLORS" Foreground="#00B4FF" FontSize="26" FontWeight="Bold"/>
+                        <TextBlock Text="Importa paletas automáticamente desde Coolors y aplica temas dinámicos." Foreground="#CBD5E1" FontSize="16" Margin="0,15,0,20" TextWrapping="Wrap"/>
+                        <TextBlock Text="https://coolors.co/2a2d34-009ddc-f26430-6761a8-009b72" Foreground="#00FF99" FontSize="15"/>
+                        <TextBlock Text="Pega aquí una URL de Coolors o el contenido/export de la paleta:" Foreground="{DynamicResource MutedTextBrush}" Margin="0,10,0,4"/>
+                        <TextBox x:Name="PaletteInputText" Height="36" Background="{DynamicResource CardBrush}" Foreground="{DynamicResource TextBrush}" BorderBrush="{DynamicResource PrimaryBrush}"/>
+                        <WrapPanel Margin="0,8,0,0">
+                            <Button Content="Importar desde texto" Width="160" Height="36" Background="{DynamicResource PrimaryBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="ImportFromText_Click"/>
+                            <Button Content="Guardar tema" Width="120" Height="36" Margin="8,0,0,0" Background="{DynamicResource SuccessBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="SaveTheme_Click"/>
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                        <Button Content="Abrir Coolors" Width="220" Height="55" Margin="0,0,0,15" Background="{DynamicResource PrimaryBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="OpenCoolors_Click"/>
+                        <Button Content="Importar Paleta" Width="220" Height="55" Background="{DynamicResource SuccessBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="ImportColors_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- SAVED THEMES MANAGEMENT -->
+            <Border Grid.Row="3" Background="{DynamicResource CardBackgroundBrush}" CornerRadius="12" Padding="18">
+                <StackPanel>
+                    <TextBlock Text="Temas guardados" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                    <DockPanel Margin="0,10,0,10">
+                        <ListBox x:Name="SavedThemesListBox" Width="560" Height="120" HorizontalAlignment="Left"/>
+                        <StackPanel DockPanel.Dock="Right" Orientation="Vertical" Margin="12,0,0,0">
+                            <Button Content="Cargar" Width="120" Height="34" Margin="0,0,0,8" Click="LoadSelectedTheme_Click"/>
+                            <Button Content="Eliminar" Width="120" Height="34" Margin="0,0,0,8" Click="DeleteSelectedTheme_Click"/>
+                            <Button Content="Renombrar" Width="120" Height="34" Click="RenameSelectedTheme_Click"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- PREVIEW & ACTIONS -->
+            <Border Grid.Row="2" Background="{DynamicResource CardBackgroundBrush}" CornerRadius="12" Padding="18" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Previsualización de paleta" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                    <ItemsControl x:Name="PalettePreview" ItemsSource="{Binding PreviewColors}" Margin="0,10,0,10">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="80" Height="80" CornerRadius="8" Margin="6" Background="{Binding}" BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="1">
+                                    <TextBlock Text=""/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <WrapPanel>
+                        <Button Content="Aplicar paleta (preview)" Width="180" Height="40" Background="{DynamicResource PrimaryBrush}" Foreground="White" Margin="0,0,8,0" Click="ApplyPreview_Click"/>
+                        <Button Content="Guardar como tema" Width="150" Height="40" Background="{DynamicResource SuccessBrush}" Foreground="White" Margin="0,0,8,0" Click="SaveTheme_Click"/>
+                        <Button Content="Revertir" Width="100" Height="40" Background="{DynamicResource DangerBrush}" Foreground="White" Click="RevertTheme_Click"/>
+                    </WrapPanel>
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <TextBlock Text="Editar colores (HEX)" Foreground="{DynamicResource MutedTextBrush}" Margin="0,6,0,6"/>
+                        <WrapPanel>
+                            <TextBox x:Name="ColorBox0" Width="120" Height="28" Margin="4"/>
+                            <TextBox x:Name="ColorBox1" Width="120" Height="28" Margin="4"/>
+                            <TextBox x:Name="ColorBox2" Width="120" Height="28" Margin="4"/>
+                            <TextBox x:Name="ColorBox3" Width="120" Height="28" Margin="4"/>
+                            <TextBox x:Name="ColorBox4" Width="120" Height="28" Margin="4"/>
+                        </WrapPanel>
+                        <WrapPanel Margin="0,8,0,0">
+                            <Button Content="Actualizar preview desde HEX" Width="220" Height="34" Margin="0,0,8,0" Click="UpdatePreviewFromHex_Click"/>
+                            <Button Content="Comprobar contraste WCAG" Width="180" Height="34" Margin="0,0,8,0" Click="CheckContrast_Click"/>
+                            <Button Content="Autoajustar texto" Width="140" Height="34" Click="AdjustTextForContrast_Click"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- THEMES -->
+            <UniformGrid Grid.Row="2" Columns="3" Rows="2">
+                <!-- BINANCE DARK -->
+                <Border Background="{DynamicResource CardBackgroundBrush}" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="BINANCE DARK" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#F0B90B" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#0B0E11" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#1E2329" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#2B3139" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource AccentBrush}" Foreground="Black" FontWeight="Bold" BorderThickness="0" Click="ApplyBinanceTheme_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- CYBERPUNK -->
+                <Border Background="#0B1220" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="CYBERPUNK NEON" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#00FFF7" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#FF00FF" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#111827" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#00FF99" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource AccentBrush}" Foreground="Black" FontWeight="Bold" BorderThickness="0" Click="ApplyCyberpunkTheme_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- COOLORS CUSTOM -->
+                <Border Background="#0B1220" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="COOLORS CUSTOM" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#2A2D34" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#009DDC" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#F26430" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#6761A8" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#009B72" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource PrimaryBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="ApplyCoolorsTheme_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- DARK BRUTALISM -->
+                <Border Background="#0B1220" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="DARK BRUTALISM" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#111111" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#222222" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#444444" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#FF5500" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource DangerBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="ApplyDarkTheme_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- SCIFI HUD -->
+                <Border Background="#0B1220" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="SCIFI HUD" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#00FF99" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#00B4FF" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#0B1220" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#1E293B" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource SuccessBrush}" Foreground="Black" FontWeight="Bold" BorderThickness="0" Click="ApplySciFiTheme_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- MINIMAL GLOW -->
+                <Border Background="#0B1220" CornerRadius="20" Margin="10" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="MINIMAL GLOW" Foreground="White" FontSize="24" FontWeight="Bold"/>
+                        <WrapPanel Margin="0,20,0,20">
+                            <Border Width="50" Height="50" Background="#FFFFFF" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#E2E8F0" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#CBD5E1" Margin="5"/>
+                            <Border Width="50" Height="50" Background="#38BDF8" Margin="5"/>
+                        </WrapPanel>
+                        <Button Content="Aplicar Tema" Height="50" Background="{DynamicResource PrimaryBrush}" Foreground="White" FontWeight="Bold" BorderThickness="0" Click="ApplyMinimalTheme_Click"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+        </Grid>
+    </ScrollViewer>
+</Window>
