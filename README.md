@@ -1,4 +1,4 @@
-# Binance Proyect
+# Binance Proyect [EN DESAROLLO]
 
 Proyecto en desarrollo para automatización y análisis relacionado con Binance/CryptoSelfBot.
 
